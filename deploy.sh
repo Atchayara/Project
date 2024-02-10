@@ -18,3 +18,8 @@ else
     echo "Not on a deployable branch (dev or master). Deployment aborted."
     exit 1
 fi
+
+if ! docker pull atchayara/production:latest &>/dev/null; then
+    echo "Image atchayara/production:latest doesn't exist locally. Pulling from the registry..."
+    docker pull atchayara/production:latest
+fi
