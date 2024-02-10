@@ -3,8 +3,6 @@
 docker-compose up -d
 
 
-docker tag reactapp:latest atchayara/reactapp:dep
-
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "$GIT_BRANCH" = "dev" ]; then
