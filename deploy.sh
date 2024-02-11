@@ -4,6 +4,7 @@ docker-compose up -d
 
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+echo "Current branch: $GIT_BRANCH" 
 
 if [ "$GIT_BRANCH" = "dev" ]; then
 
