@@ -2,24 +2,21 @@
 
 docker-compose up -d
 
+docker tag reactapp:latest atchayara/reactapp:dep
+
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "$GIT_BRANCH" = "dev" ]; then
 
-        docker tag atchayara/reactapp:latest dev:devdeploy
-	docker push atchayara/dev:devdeploy
+        docker tag reactapp:dep atchayara/reactdev:devdeploy
+	docker push dev/reactapp:dep
 
 elif [ "$GIT_BRANCH" = "master" ]; then
 
-	docker tag atchayara/reactapp:latest prod:proddeploy
-	docker push atchayara/production:proddeploy
+	docker tag reactapp:dep atchayara/reactprod:proddeploy
+	docker push production/reactapp:dep
 else
     echo "Not on a deployable branch (dev or master). Deployment aborted."
     exit 1
-fi
-
-if ! docker pull atchayara/production:latest &>/dev/null; then
-    echo "Image atchayara/production:latest doesn't exist locally. Pulling from the registry..."
-    docker pull atchayara/production:latest
 fi
