@@ -3,6 +3,5 @@ version: '3'
 services:
   react-app:
     image: reactapp:latest
-    container_name: react
     ports:
       - "80:80"
