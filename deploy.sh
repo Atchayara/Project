@@ -16,6 +16,6 @@ elif [ "$GIT_BRANCH" = "master" ]; then
         docker tag reactapp:latest atchayara/production:latest
 	docker push atchayara/production:latest
 else
-    echo "Not on a deployable branch (dev or master). Deploymen aborted"
+    echo "Not on a deployable branch (dev or master). Deploymen abored"
     exit 1
 fi
