@@ -2,16 +2,19 @@
 
 docker-compose up -d
 
-GIT_BRANCH=$(git --git-dir=/path/to/repository/.git rev-parse --abbrev-ref HEAD)
+
+GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 echo "Current branch: $GIT_BRANCH" 
 
 if [ "$GIT_BRANCH" = "dev" ]; then
-    docker tag atchayara/reactapp:latest atchayara/dev:devdeploy
-    docker push atchayara/dev:devdeploy
+
+        docker tag reactapp:latest atchayara/dev:latest
+	docker push atchayara/dev:latest
 
 elif [ "$GIT_BRANCH" = "master" ]; then
-    docker tag atchayara/reactapp:latest atchayara/production:proddeploy
-    docker push atchayara/production:proddeploy
+
+        docker tag reactapp:latest atchayara/production:latest
+	docker push atchayara/production:latest
 else
     echo "Not on a deployable branch (dev or master). Deployment aborted."
     exit 1
